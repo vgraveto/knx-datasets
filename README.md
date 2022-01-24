@@ -1,17 +1,17 @@
 # A Dataset Bundle for Building Automation and Control Systems
 **useful for Security Analysis and to study the normal operation of these systems**
 
-This document describes a dataset bundle with diverse types of attacks, and also a not poisoned dataset. The capture was obtained in a real house with a complete Building Automation and Control System (BACS). The data is available online and also reachable publicly available at the IEEE DataPort repositóry via DOI ***XXXXXXXX***. This document describes the several included datasets and how their data can be employed in security analysis of KNX based building Automation.
+This document describes a dataset bundle with diverse types of attacks, and also a not poisoned dataset. The capture was obtained in a real house with a complete Building Automation and Control System (BACS). The data is available online and also reachable publicly at the IEEE DataPort repositóry via DOI ***XXXXXXXX***. This document describes the several included datasets and how their data can be employed in security analysis of KNX based building Automation.
 
 The future of modern buildings and their comfort conditions
-combined with the ecological need for a sustained planet will necessarily lead to increases in building automation systems. The benefit of using these technologies is however associated with new attack possibilities and system intrusions as a result of increasingly connectivity and remote accessibility. [Graveto and al.] (https://www.sciencedirect.com/science/article/pii/S0167404821003515) presents a state of the art about the security, safety and privacy issues in Building Automation and Control Systems (BACS). As a result, all the players evolved in building automation are concerned about the need of improvement of service quality, security and reliability of those systems.
+combined with the ecological need for a sustained planet will necessarily lead to increases in building automation systems. The benefit of using these technologies is however associated with new attack possibilities and system intrusions as a result of increasingly connectivity and remote accessibility. [Graveto and al.] (https://www.sciencedirect.com/science/article/pii/S0167404821003515 *"Security of Building Automation and Control Systems: Survey and future research directions"*) presents a state of the art about the security, safety and privacy issues in Building Automation and Control Systems (BACS). As a result, all the players evolved in building automation are concerned about the need of improvement of service quality, security and reliability of those systems.
 The search for required datasets to enhance the models and the methods used to study and improve BACS expose the lack of such tools and even full lack of datasets.
 
 ## Collection process
 
 Data collection was carried out in a single-family house, consisting of three floors. This house is equipped with a KNX home automation system that controls the lighting, blinds, the heating system that uses radiators and the alarm system. Some local environments are also controlled, with light and motion detectors. The building has devices for monitoring the environmental conditions outside, as well as movement and lighting control in the backyard of the house and its annexes.
 
-###The Scenario Description
+### The Scenario Description
 The house topology can be described as follows:
 - the 1st floor is made up of four bedrooms, all with private bathroom, one of which additionally has a dressing room the suite;
 - the main floor comprises an entrance hall, a library, the piano room, a common room (dining and living room) with a balcony, a kitchen with storage and a pantry;
@@ -54,7 +54,7 @@ Then, during the treatment and enrichment process, a comma separated values (CSV
 - Target - the classification field that is \textit{zero} for messages of the normal operation and \textit{one} for poison messages (either attack and the respective response from the system).
 
 
-### Sampling interval}
+### Sampling interval
 The sampling took place uninterruptedly between 3:26 pm of 7/March/2020 and 5:00 pm of 13/April/2020, leading to the storage of 381’337 packages which, after processing and eliminating some invalid data, allowed the creation of a sample with 379’875 packages.
 
 ## Provided Datasets
@@ -88,14 +88,14 @@ The *Device info* consists of the request of information of two known devices IA
 
 Each *Device info* request is composed of the attacker sending  TConnect and DeviceDescription messages. The device replies with TACK and DeviceDescription messages. The attacker sends TACK and MemoryRead messages witch are replied TACK and MemoryResponse messages. The attacker sends TACK and ADCRaad replied with TACK and TACK and ADCREsponse. The last two exchanges are repeated some times to gather the device information and finally the attacker ends the conversation sending a last TACK and TDisconnect.
 
-### Message injection}
+### Message injection
 The *Message injection* consists on sending into the bus valid KNX messages with different rates and contents simulating that the attacker has the purpose of disturbing the BACS.
 
-#### Slow rate attack
-This *Slow rate attack* uses valid KNX messages but with invalid SA or DA that are injected at random intervals on the bus. Three different datasets are provided with different poison densities: 1\%, 5\% or 10 \% of the total messages in the dataset.  
+	#### Slow rate attack
+	This *Slow rate attack* uses valid KNX messages but with invalid SA or DA that are injected at random intervals on the bus. Three different datasets are provided with different poison densities: 1\%, 5\% or 10 \% of the total messages in the dataset.  
 
-#### High rate attack - DoS
-The *High rate attack* consists of a Denial of Service (DoS) attack where a large number os messages (15'000) are injected into the bus with high density rate (one each millisecond). The used message is a valid KNX message with valid SA and DA (0xBC116E1403E100804A) that is the instruction used to open the dinning room blind using the switch IA 1.1.110.  A message  of type GroupValue\_Write is sent to GA 2/4/3 with value 0x00. The attack starts at 9:55:10 pm of 17/March/2020 and has the duration 15 seconds.
+	#### High rate attack - DoS
+	The *High rate attack* consists of a Denial of Service (DoS) attack where a large number os messages (15'000) are injected into the bus with high density rate (one each millisecond). The used message is a valid KNX message with valid SA and DA (0xBC116E1403E100804A) that is the instruction used to open the dinning room blind using the switch IA 1.1.110.  A message  of type GroupValue\_Write is sent to GA 2/4/3 with value 0x00. The attack starts at 9:55:10 pm of 17/March/2020 and has the duration 15 seconds.
 
 ### Invalid context attack
 
@@ -119,7 +119,7 @@ The dataset bundle is available as a zipped file in which there are five folders
 - IC - the invalid context attack
 
 
-In all situations, the raw capture files will be provided, in PCAP format. The files in CSV format with the data augmentation, which in addition to the enrichment information also contains a classification field name \textit{tagret}. There is a one-to-one relationship between packets in PCAP format and CSV format. When necessary, there will be an additional extension in the filename to indicate the poison density in the file **\_1**, **\_5** or **\_10** (respectively for 1\%, 5\% and 10\%).
+In all situations, the raw capture files will be provided, in PCAP format. The files in CSV format with the data augmentation, which in addition to the enrichment information also contains a classification field name *tagret*. There is a one-to-one relationship between packets in PCAP format and CSV format. When necessary, there will be an additional extension in the filename to indicate the poison density in the file **\_1**, **\_5** or **\_10** (respectively for 1\%, 5\% and 10\%).
 
 
 
