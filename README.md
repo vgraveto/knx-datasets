@@ -91,11 +91,11 @@ Each *Device info* request is composed of the attacker sending  TConnect and Dev
 ### Message injection
 The *Message injection* consists on sending into the bus valid KNX messages with different rates and contents simulating that the attacker has the purpose of disturbing the BACS.
 
-	#### Slow rate attack
-	This *Slow rate attack* uses valid KNX messages but with invalid SA or DA that are injected at random intervals on the bus. Three different datasets are provided with different poison densities: 1\%, 5\% or 10 \% of the total messages in the dataset.  
+#### Slow rate attack
+This *Slow rate attack* uses valid KNX messages but with invalid SA or DA that are injected at random intervals on the bus. Three different datasets are provided with different poison densities: 1\%, 5\% or 10 \% of the total messages in the dataset.  
 
-	#### High rate attack - DoS
-	The *High rate attack* consists of a Denial of Service (DoS) attack where a large number os messages (15'000) are injected into the bus with high density rate (one each millisecond). The used message is a valid KNX message with valid SA and DA (0xBC116E1403E100804A) that is the instruction used to open the dinning room blind using the switch IA 1.1.110.  A message  of type GroupValue\_Write is sent to GA 2/4/3 with value 0x00. The attack starts at 9:55:10 pm of 17/March/2020 and has the duration 15 seconds.
+#### High rate attack - DoS
+The *High rate attack* consists of a Denial of Service (DoS) attack where a large number os messages (15'000) are injected into the bus with high density rate (one each millisecond). The used message is a valid KNX message with valid SA and DA (0xBC116E1403E100804A) that is the instruction used to open the dinning room blind using the switch IA 1.1.110.  A message  of type GroupValue\_Write is sent to GA 2/4/3 with value 0x00. The attack starts at 9:55:10 pm of 17/March/2020 and has the duration 15 seconds.
 
 ### Invalid context attack
 
